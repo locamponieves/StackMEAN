@@ -1,9 +1,16 @@
 const express = require('express')
 const morgan  = require('morgan')
+const cors    = require('cors')
 
 const app = express()
 
 app.set('port', process.env.PORT || 4000)
+
+// nos permite aceptar otras peticiones de otro servidor
+app.use(cors())
+
+// para el caso de que angular tiene este puerto y solo queremos recibir peticiones de esta IP
+// app.use(cors({origin: "http://localhost:4200"})) 
 
 app.use(morgan('dev'))
 
